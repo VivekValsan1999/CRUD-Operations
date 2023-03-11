@@ -7,7 +7,7 @@ const noteSchema= new mongoose.Schema({
         type:String,
         required:[true,`Value Should be provided`], // to make it mandatory, in array, first one is value and second is the message to be displayed on error
         trim:true,
-        maxlength:[20,`Value exceeds the limit`]
+        maxlength:[30,`Value exceeds the limit`]
     },
     body:{
         type:String

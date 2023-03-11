@@ -9,6 +9,8 @@ const noteModel = require("./server1/model/noteSchema");
 const notesController = require("./server1/controller/notesController");
 const cors = require("cors")
 const routes = require("./server1/routes/routes");
+const routeNotFound=require("../Server/server1/middleware/routeNotFound");
+const errorHandleMiddleware=require("./server1/middleware/errorHanderMiddleware")
 
 // Importing PORT
 if (process.env.NODE_ENV != 'production') {
@@ -30,6 +32,8 @@ app.use(morgan('tiny'));
 
 // routes
 app.use("/notes", routes);
+app.use(routeNotFound);//to deal with unknown routes
+app.use(errorHandleMiddleware);//to deal with errors
 
 // server will run after setting up the database
 const start = async () => {
